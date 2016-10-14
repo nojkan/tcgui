@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+
 
 import { AppComponent } from './app.component';
 import { TournoiDetailComponent } from './tournoi-detail/tournoi-detail.component';
@@ -11,9 +13,17 @@ import { TournoisComponent } from './tournois/tournois.component';
 import { UsersComponent } from './users/users.component';
 
 import { AppRoutingModule }     from './app-routing.module';
-import { AppRoutingComponent } from './app-routing/app-routing.component';
 
 import { TournoiService } from './service/tournoi.service'
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDn4qKI9GXO2bIbYjsjNWpAsc3w2WcOZhw',
+  authDomain: 'tcgpay-908ad.firebaseapp.com',
+  databaseURL: 'https://tcgpay-908ad.firebaseio.com',
+  storageBucket: 'tcgpay-908ad.appspot.com',
+  messagingSenderId: '773314518903'
+};
 
 @NgModule({
   declarations: [
@@ -27,12 +37,11 @@ import { TournoiService } from './service/tournoi.service'
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [TournoiService],
   bootstrap: [AppComponent]
 })
-
-
 
 export class AppModule { }
