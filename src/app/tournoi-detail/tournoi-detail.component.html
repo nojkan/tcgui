@@ -1,0 +1,10 @@
+  <div *ngIf="tournoi">
+   <h2>{{tournoi.name}} details!</h2>
+   <div><label>id: </label>{{tournoi.id}}</div>
+   <div><label>name: </label>{{tournoi.name}}</div>
+   <div><label>price: </label>{{tournoi.price}}</div>
+   <input [(ngModel)]="tournoi.name" placeholder="name">
+
+   <button (click)="goBack()">Back</button>
+  </div>
+

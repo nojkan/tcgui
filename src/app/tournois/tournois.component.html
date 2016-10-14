@@ -1,0 +1,76 @@
+
+  
+
+ 
+
+
+
+ 
+
+
+ 
+ 
+ 
+ <style>
+div#list_de_trucs{
+margin:10px auto;
+width:100%;
+min-width:400px;
+max-width:700px;
+}
+div#list_de_trucs table{
+margin:0px;
+width:100%;
+}
+</style>
+ 
+ <div id="list_de_trucs" class="table-responsive">
+<table class="table table-hover">
+ 
+ 
+<thead class="thead-inverse"> 
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Price</th>
+<th>date</th>
+<th>
+        <a href="">
+          <i class="fa fa-plus"></i>
+        </a>
+      </th>
+    </tr>
+</thead>
+ 
+ 
+ 
+ 
+<tbody>
+ 
+ 
+<tr *ngFor="let tournoi of tournois" [class.selected]="tournoi === selectedTournoi" (click)="gotoDetail(tournoi)" >
+ 
+ 
+
+ <th scope="row">{{tournoi.id}}</th> 
+<td>{{tournoi.name}}</td>
+<td>{{tournoi.price}}</td>
+<td>{{tournoi.date}}</td>
+<!--<td>
+        <a href="" &#91;routerLink&#93;="&#91;'/UserUpdate', {id: user.id}&#93;">
+          <i class="fa fa-pencil"></i>
+        </a>
+        <a href="javascript:void(0)" (click)="deleteModel(user)">
+          <i class="fa fa-trash"></i>
+        </a>
+     </td>
+ -->
+ 
+    </tr>
+ 
+ 
+  </tbody>
+ 
+ 
+</table>
+</div>
