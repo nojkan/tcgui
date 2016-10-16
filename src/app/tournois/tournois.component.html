@@ -48,14 +48,14 @@ width:100%;
 <tbody>
  
  
-<tr *ngFor="let tournoi of tournois" [class.selected]="tournoi === selectedTournoi" (click)="gotoDetail(tournoi)" >
- 
+<!--<tr *ngFor="let tournoi of tournois" [class.selected]="tournoi === selectedTournoi" (click)="gotoDetail(tournoi)" >-->
+ <tr *ngFor="let compet of competitions | async" [class.selected]="compet === selectedCompet" (click)="gotoDetail(compet)" >
  
 
- <th scope="row">{{tournoi.id}}</th> 
-<td>{{tournoi.name}}</td>
-<td>{{tournoi.price}}</td>
-<td>{{tournoi.date}}</td>
+ <th scope="row">{{compet.id}}</th> 
+<td>{{compet.name}}</td>
+<td>{{compet.price}}</td>
+<td>{{compet.date}}</td>
 <!--<td>
         <a href="" &#91;routerLink&#93;="&#91;'/UserUpdate', {id: user.id}&#93;">
           <i class="fa fa-pencil"></i>
@@ -73,4 +73,3 @@ width:100%;
  
  
 </table>
-</div>

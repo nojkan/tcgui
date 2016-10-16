@@ -3,19 +3,29 @@ import { Injectable } from '@angular/core';
 import { Tournoi } from '../model/tournoi';
 import { TOURNOIS } from '../mock/mock-tournois';
 
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+
 @Injectable()
 export class TournoiService {
 
-  constructor() { }
+  //constructor() { }
+  tournois: FirebaseListObservable<Tournoi[]>;
+  af: AngularFire; 
 
-  getTournois(): Promise<Tournoi[]> {
-  	return Promise.resolve(TOURNOIS);
+  constructor(){
+
+  	this.tournois = this.af.database.list('/tournois');
+
+  }
+
+
+  getTournois(): FirebaseListObservable<Tournoi[]>{
+  	return this.tournois;
   } // stub	
 
 
-  getTournoi(id: number): Promise<Tournoi> {
-  return this.getTournois()
-             .then(tournois => tournois.find(tournoi => tournoi.id === id));
+  getTournoi(id: number): FirebaseObjectObservable<Tournoi>{
+  return this.af.database.object('/tournois/'+id);
   }
 
 
