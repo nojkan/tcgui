@@ -35,8 +35,9 @@ export class TournoisComponent /*implements OnInit*/ {
 
    //onSelect(tournoi: Tournoi): void {
    //    this.selectedTournoi = tournoi;
-   onSelect(compet: Tournoi): void {
-       this.selectedTournoi = compet;
+   onSelect(tournoi: Tournoi): void {
+       this.router.navigate(['/tournois', tournoi.id]);
+       //this.selectedTournoi = compet;
      }
       
 

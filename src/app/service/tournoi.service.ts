@@ -25,7 +25,7 @@ export class TournoiService {
 
 
   getTournoi(id: number): FirebaseObjectObservable<Tournoi>{
-  return this.af.database.object('/tournois/'+id);
+  return this.af.database.object('/tournois/',id);
   }
 
 
