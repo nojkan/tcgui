@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_PROVIDERS, AngularFireModule, defaultFirebase,firebaseAuthConfig, AuthProviders,AuthMethods } from 'angularfire2';
 
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,11 @@ export const firebaseConfig = {
   messagingSenderId: '773314518903'
 };
 
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)
   ],
   providers: [TournoiService],
   bootstrap: [AppComponent]

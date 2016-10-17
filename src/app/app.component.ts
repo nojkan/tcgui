@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseAuth,AuthProviders,AuthMethods } from 'angularfire2';
 
 
 @Component({
@@ -14,9 +14,25 @@ export class AppComponent  {
 
 	title = 'Tournois du TCG';
 
-    items: FirebaseListObservable<any[]>;
-    constructor(af: AngularFire) {
-       this.items = af.database.list('items');
+    constructor(public af: AngularFire, private auth: FirebaseAuth) {
+    	this.af.auth.subscribe(auth => console.log(auth));
+    }
+
+    login() {
+    this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Redirect,
+    });
+    }
+
+   /* overrideLogin() {
+    this.af.auth.login({
+      provider: AuthProviders.Anonymous,
+      method: AuthMethods.Anonymous,
+    });
+*/	
+	logout() {
+        this.af.auth.logout();
     }
 }
 

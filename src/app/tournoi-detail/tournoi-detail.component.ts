@@ -38,7 +38,12 @@ export class TournoiDetailComponent {
       })
     }
 
+     
+     addUser(): void {
+       
+       this.location.back();
 
+     }
 
       
 

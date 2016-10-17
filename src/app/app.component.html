@@ -1,11 +1,6 @@
-<h1>{{title}}</h1>
- 
-   <ul>
-   <li class="text" *ngFor="let item of items | async">
-    {{item.name}}
-  </li>
-  </ul>
-
+<div> {{ (af.auth | async)?.uid }} </div>
+  <button (click)="login()">Login With Google</button>
+  <button (click)="logout()">Logout</button>
 <!--<app-tournois></app-tournois>-->
   <nav>
   <a routerLink="/tournois" routerLinkActive="active">Tournois</a>

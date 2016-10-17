@@ -16,14 +16,14 @@ export class TournoisComponent /*implements OnInit*/ {
 
    title = 'pay 2 tcg';
 
-  //tournois: Tournoi[]; identiue competitions
+  competitions: FirebaseListObservable<Tournoi[]>
 
   selectedTournoi: Tournoi;
 
-  competitions: FirebaseListObservable<Tournoi[]>;
+  //competitions: FirebaseListObservable<Tournoi[]>;
 
-  constructor(af: AngularFire,private router: Router) {
-    this.competitions = af.database.list('/tournois');
+  constructor(af: AngularFire,private router: Router, public tournoiService: TournoiService) {
+    this.competitions = tournoiService.getTournois();
   }
 
   /*tournoi: Tournoi = {
