@@ -1,8 +1,9 @@
 export class Tournoi {
-
-  id: number;
-  name: string;
-  price: number;
-  date: string;
+ constructor (
+  public id: number,
+  public name: string,
+  public price: number,
+  public date: string
+  ){}
 
 }

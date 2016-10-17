@@ -10,11 +10,11 @@ export class TournoiService {
 
   //constructor() { }
   tournois: FirebaseListObservable<Tournoi[]>;
-  af: AngularFire; 
+  
 
-  constructor(){
+  constructor(public af: AngularFire){
 
-  	this.tournois = this.af.database.list('/tournois');
+  	this.tournois = af.database.list('/tournois');
 
   }
 
@@ -25,7 +25,10 @@ export class TournoiService {
 
 
   getTournoi(id: number): FirebaseObjectObservable<Tournoi>{
-  return this.af.database.object('/tournois/',id);
+
+    console.log("tournoi=" + (this.af.database.list('/tournois/'+id)));
+    return this.af.database.object('/tournois/'+id);
+
   }
 
 

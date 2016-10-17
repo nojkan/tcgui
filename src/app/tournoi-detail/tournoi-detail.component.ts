@@ -6,7 +6,7 @@ import { Tournoi } from '../model/tournoi';
 
 import { TournoiService } from '../service/tournoi.service';
 
-import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-tournoi-detail',
@@ -15,12 +15,10 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
   providers: [TournoiService]
 })
 
-export class TournoiDetailComponent  implements OnInit{
+export class TournoiDetailComponent {
 
-  @Input()
-  tournoi: FirebaseObjectObservable<any>;
-  
-  //tournoi: Tournoi;
+  @Input()  
+  tournoi: FirebaseObjectObservable<Tournoi>;
 
   
 
@@ -28,28 +26,41 @@ export class TournoiDetailComponent  implements OnInit{
       //private route: ActivatedRoute,
       private route: ActivatedRoute,
       private location: Location,
-      private af: AngularFire
+      af: AngularFire,
+      public tournoiService: TournoiService
 
-    ) { /*this.selectedTournois = af.database.object('tournois')*/}
+    ) { 
+      
+      this.route.params.forEach((params: Params) => {
+        let id = +params['id'];
+        console.log("id="+id);
+        this.tournoi = tournoiService.getTournoi(id);
+      })
+    }
 
-  ngOnInit(): void {
+
+
+      
+
+  /*ngOnInit(): void {
+    
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
+      this.tournoi = this.af.database.ref('/tournoi/'+id);
       //this.tournoiService.getTournoi(id).map(tournoi => this.tournoi = tournoi);
-      this.tournoi = this.af.database.object('/tournois/2');
+      this.tournoi.once('value').then (function(snapshots) {
+          console.log(snapshots.child(name).key)
+          console.log(snapshots.child(name).val())
+       
+      })
       //alert("plop "+this.tournoi);
     });
-  }
-/*constructor(af: AngularFire,private router: Router) {
-    this.competitions = af.database.list('/tournois');
   }*/
+
 
   
 
- /* constructor(af: AngularFire,private router: Router) {
-    this.competitions = af.database.list('/tournois');
-  }*/
-  
+ 
 
   goBack(): void {
   	this.location.back();
