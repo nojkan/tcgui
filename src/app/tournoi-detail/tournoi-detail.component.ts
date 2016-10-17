@@ -1,12 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
-
 import { Location }                 from '@angular/common';
-import { Tournoi } from '../model/tournoi';
+import { Tournoi }                  from '../model/tournoi';
+import { TournoiService }           from '../service/tournoi.service';
 
-import { TournoiService } from '../service/tournoi.service';
-
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable,FirebaseAuth} from 'angularfire2';
 
 @Component({
   selector: 'app-tournoi-detail',
@@ -26,8 +24,9 @@ export class TournoiDetailComponent {
       //private route: ActivatedRoute,
       private route: ActivatedRoute,
       private location: Location,
-      af: AngularFire,
-      public tournoiService: TournoiService
+      public af: AngularFire,
+      public tournoiService: TournoiService,
+      private auth: FirebaseAuth
 
     ) { 
       

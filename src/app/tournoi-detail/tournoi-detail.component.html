@@ -1,11 +1,12 @@
+<div *ngIf="auth | async">
 <div *ngIf="tournoi">
    <h2>{{(tournoi | async)?.name}} details!</h2>
    <div><label>id: </label>{{(tournoi| async)?.id}}</div>
    <div><label>name: </label>{{(tournoi| async)?.name}}</div>
    <div><label>price: </label>{{(tournoi| async)?.price}}</div>
-   <input [(ngModel)]="tournoi.name" placeholder="name">
+   <input [(ngModel)]="tournoi.name" value="nametest">
 
    <button (click)="goBack()">Back</button>
 </div>
+</div>
 
-<!--<h1>ooh{{ (tournoi | async)?.id }}</h1>-->

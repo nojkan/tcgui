@@ -3,7 +3,7 @@ import { Tournoi } from '../model/tournoi';
 import { TournoiService } from '../service/tournoi.service';
 import { Router } from '@angular/router';
 
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseAuth} from 'angularfire2';
 
 
 @Component({
@@ -22,8 +22,9 @@ export class TournoisComponent /*implements OnInit*/ {
 
   //competitions: FirebaseListObservable<Tournoi[]>;
 
-  constructor(af: AngularFire,private router: Router, public tournoiService: TournoiService) {
+  constructor(public af: AngularFire,private router: Router, public tournoiService: TournoiService,private auth: FirebaseAuth) {
     this.competitions = tournoiService.getTournois();
+    //af.auth.subscribe(auth => console.log(auth));
   }
 
   /*tournoi: Tournoi = {

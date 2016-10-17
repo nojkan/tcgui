@@ -23,7 +23,7 @@ margin:0px;
 width:100%;
 }
 </style>
- 
+ <div *ngIf="auth | async">
  <div id="list_de_trucs" class="table-responsive">
 <table class="table table-hover">
  
@@ -73,3 +73,7 @@ width:100%;
  
  
 </table>
+</div>
+</div>
+
+

@@ -1,4 +1,6 @@
-<div> {{ (af.auth | async)?.uid }} </div>
+<div > {{ (af.auth | async)?.uid }} </div>
+<div *ngIf="auth | async">You are logged in</div>
+<div *ngIf="!(auth | async)">Please log in</div>
   <button (click)="login()">Login With Google</button>
   <button (click)="logout()">Logout</button>
 <!--<app-tournois></app-tournois>-->
@@ -6,7 +8,7 @@
   <a routerLink="/tournois" routerLinkActive="active">Tournois</a>
   <a routerLink="/users" routerLinkActive="active">Liste Users</a>
    </nav>
-   <router-outlet></router-outlet>
 
- 
+    <router-outlet></router-outlet>
+   <br>
 	
