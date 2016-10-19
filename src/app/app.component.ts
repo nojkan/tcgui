@@ -15,7 +15,8 @@ export class AppComponent  {
 	title = 'Tournois du TCG';
 
     constructor(public af: AngularFire, private auth: FirebaseAuth) {
-    	this.af.auth.subscribe(auth => console.log(auth));
+    	this.af.auth.subscribe(auth => console.log(JSON.stringify(auth)));
+      
     }
 
     login() {
@@ -23,6 +24,9 @@ export class AppComponent  {
       provider: AuthProviders.Google,
       method: AuthMethods.Redirect,
     });
+
+
+
     }
 
    /* overrideLogin() {
