@@ -1,6 +1,6 @@
 <div *ngIf="auth | async">
 <div *ngIf="tournoi">
-   <h2>{{(tournoi | async)?.name}} details!</h2>
+   <!--<h2></h2>
    <div><label>id: </label>{{(tournoi| async)?.id}}</div>
    <div><label>name: </label>{{(tournoi| async)?.name}}</div>
    <div><label>price: </label>{{(tournoi| async)?.price}}</div>
@@ -8,5 +8,15 @@
 
    <button (click)="goBack()">Back</button>
 </div>
+</div>-->
+
+<div class="jumbotron">
+  <h1>{{(tournoi| async)?.name}}</h1>
+  <p>Pour vous inscrire cliquez payer simplement via le bouton ci dessous</p>
+  <p><a class="btn btn-primary btn-lg">pay</a></p>
+   <p><a class="btn btn-primary btn-lg" (click)="goBack()">back</a></p>
 </div>
 
+
+
+</div>
