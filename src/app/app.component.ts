@@ -16,7 +16,7 @@ export class AppComponent  {
 
     constructor(public af: AngularFire, private auth: FirebaseAuth) {
     	//this.af.auth.subscribe(auth => console.log(JSON.stringify(auth)));
-      this.af.auth.subscribe(auth => console.log(auth.google.displayName));
+      this.af.auth.subscribe(auth => console.log(auth));
 
     }
 

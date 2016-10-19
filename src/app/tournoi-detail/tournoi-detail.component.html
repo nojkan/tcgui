@@ -1,3 +1,11 @@
+<div class="container">
+<ul class="pager">
+  <!--<li class="next disable"><a href="#"> Next &rarr;</a></li>-->
+  <li class="previous"><a (click)="goBack()">&larr; Back </a></li>
+</ul>
+</div>
+<div class="container">
+
 <div *ngIf="auth | async">
 <div *ngIf="tournoi">
    <!--<h2></h2>
@@ -12,11 +20,10 @@
 
 <div class="jumbotron">
   <h1>{{(tournoi| async)?.name}}</h1>
-  <p>Pour vous inscrire cliquez payer simplement via le bouton ci dessous</p>
-  <p><a class="btn btn-primary btn-lg">pay</a></p>
-   <p><a class="btn btn-primary btn-lg" (click)="goBack()">back</a></p>
+  <p>Pour vous inscrire et payer cliquez simplement via le bouton ci dessous</p>
+  <p><a class="btn btn-primary btn-lg">je paye</a></p>
 </div>
 
-
-
 </div>
+</div>
+

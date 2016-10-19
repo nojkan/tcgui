@@ -17,18 +17,19 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a routerLink="/tournois" routerLinkActive="active">Tournois <span class="sr-only">(current)</span></a></li>
-        <li><a  routerLink="/users" routerLinkActive="active">mes inscriptions</a></li>
+        <li><a  routerLink="/users" routerLinkActive="active">Mes inscriptions</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="login()">Sing In</a></li>
-        <li><a (click)="logout()">Logout</a></li>
+        <li><a><div *ngIf="(auth | async)">Welcome {{ (af.auth | async)?.google.displayName }}</div></a></li>
+        <li><a (click)="login()"><div *ngIf="!(auth | async)">Sing In</div></a></li>
+        <li><a (click)="logout()"><div *ngIf="(auth | async)">Logout</div></a></li>
       </ul>
     </div>
   </div>
 </nav>	
 
 <div > {{ (af.auth | async)?.uid   }} </div>
-<div *ngIf="auth | async">You are logged in</div>
+<div *ngIf="(auth | async)">Logged as {{ (af.auth | async)?.google.displayName }}</div>
 <div *ngIf="!(auth | async)">Please log in</div>
 
 <!--<app-tournois></app-tournois>-->
